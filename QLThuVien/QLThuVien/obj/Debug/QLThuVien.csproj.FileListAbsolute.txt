@@ -1,0 +1,68 @@
+E:\Du An\QLThuVien\QLThuVien\bin\Debug\QLThuVien.exe.config
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.csprojResolveAssemblyReference.cache
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.Properties.Resources.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.csproj.GenerateResource.Cache
+E:\Du An\QLThuVien\QLThuVien\bin\Debug\QLThuVien.exe
+E:\Du An\QLThuVien\QLThuVien\bin\Debug\QLThuVien.pdb
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.exe
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.pdb
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmPhieuMuon.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmnhanvien.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.Giaodien.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmPhieuNhacTra.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmSach.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmSachMuon.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmTheThuVien.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmdangky.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmtimkiemsach.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.muontrasach.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.thongtinsach.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.inthongtinsach.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.exe.licenses
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmnoiquy.resources
+E:\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.insach.resources
+E:\hoc\Du An\QLThuVien\QLThuVien\bin\Debug\QLThuVien.exe.config
+E:\hoc\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.exe
+E:\hoc\Du An\QLThuVien\QLThuVien\obj\Debug\QLThuVien.pdb
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\bin\Debug\QLThuVien.exe.config
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.exe
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.pdb
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.csprojResolveAssemblyReference.cache
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmdangky.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmnoiquy.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmthethuvien.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmtimkiemsach.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.Giaodien.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmNhanVien.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmPhieuMuon.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmPhieuNhacTra.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmSach.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmSachMuon.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.insach.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.inthongtinsach.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.muontrasach.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.Properties.Resources.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.thongtinsach.resources
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.csproj.GenerateResource.Cache
+C:\Users\Dinhvan\Downloads\QLThuVien\QLThuVien\QLThuVien\obj\Debug\QLThuVien.exe.licenses
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\bin\Debug\QLThuVien.exe.config
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.exe
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.pdb
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.csprojResolveAssemblyReference.cache
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmdangky.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmnoiquy.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmthethuvien.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmtimkiemsach.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.Giaodien.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmNhanVien.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmPhieuMuon.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmPhieuNhacTra.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmSach.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.frmSachMuon.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.insach.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.inthongtinsach.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.muontrasach.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.Properties.Resources.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.thongtinsach.resources
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.csproj.GenerateResource.Cache
+C:\Users\gachj\Desktop\CongCu\QLThuVien\QLThuVien\obj\Debug\QLThuVien.exe.licenses
