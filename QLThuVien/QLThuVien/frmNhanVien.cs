@@ -13,6 +13,14 @@ namespace QLThuVien
 {
     public partial class frmNhanVien : Form
     {
-
+	string A;
+        SqlConnection cnn;
+        public frmNhanVien()
+        {
+            InitializeComponent();
+            cnn = new SqlConnection("Data Source=.;Initial Catalog=QLThuVien;Integrated Security=True");
+        }
+	
+        
     }
 }
