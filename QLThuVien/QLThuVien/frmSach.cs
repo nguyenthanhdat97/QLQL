@@ -396,5 +396,194 @@ namespace QLThuVien
             data_bingding();
         }        
         #endregion
+	#region thoát sách
+        private void btnthoatsach_Click(object sender, EventArgs e)
+        {
+            DialogResult kq;
+            kq = MessageBox.Show("Bạn Thật Sự Muốn Thoát kg?", "Chú Ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (kq == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+        #endregion
+        #region lay hình
+        private void BTNHINH_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            openFileDialog1.Filter = "Image file(*.jpg)|*.jpg";//loai hinh anh
+            PICHINH.ImageLocation = openFileDialog1.FileName;//đường dẫn open             
+        }
+        #endregion
+        #region sachdautien
+        private void hiensachdautien()
+        {
+            txtpage.Text = vt.ToString();
+            vtsach = new DataTable();
+            vtsach = docsach();
+            DataRow r = vtsach.Rows[vt];
+            txtMasach.Text = r[0].ToString();
+            txtTensach.Text = r[1].ToString();
+            txttheloaisach.Text = r[2].ToString();
+            txttinhtrang.Text = r[3].ToString();
+            txtsoluong.Text = r[4].ToString();
+            txtnxb.Text = r[5].ToString();
+            txtnamxb.Text = r[6].ToString();
+            txttg.Text = r[7].ToString();
+            txtpage.Text = (1 + vt).ToString() + "/" + vtsach.Rows.Count.ToString();
+        }
+        #endregion
+        #region dau
+        private void btndau_Click(object sender, EventArgs e)
+        {
+            if (vt > 0)
+            {
+                vt = 0;
+                DataRow r = vtsach.Rows[vt];
+                txtMasach.Text = r[0].ToString();
+                txtTensach.Text = r[1].ToString();
+                txttheloaisach.Text = r[2].ToString();
+                txttinhtrang.Text = r[3].ToString();
+                txtsoluong.Text = r[4].ToString();
+                txtnxb.Text = r[5].ToString();
+                txtnamxb.Text = r[6].ToString();
+                txttg.Text = r[7].ToString();
+                txtpage.Text = (1 + vt).ToString() + "/" + vtsach.Rows.Count.ToString(); 
+                btncuoi.Enabled = true;
+            }
+            else btndau.Enabled = false;
+        }
+        #endregion
+        #region lui
+        private void btnlui_Click(object sender, EventArgs e)
+        {
+            if (vt > 0)
+            {
+                vt--;
+                DataRow r = vtsach.Rows[vt];
+                txtMasach.Text = r[0].ToString();
+                txtTensach.Text = r[1].ToString();
+                txttheloaisach.Text = r[2].ToString();
+                txttinhtrang.Text = r[3].ToString();
+                txtsoluong.Text = r[4].ToString();
+                txtnxb.Text = r[5].ToString();
+                txtnamxb.Text = r[6].ToString();
+                txttg.Text = r[7].ToString();
+                txtpage.Text = (1 + vt).ToString() + "/" + vtsach.Rows.Count.ToString(); 
+                btntoi.Enabled = true;
+            }
+            else btnlui.Enabled = false;
+        }
+        #endregion
+        #region toi
+        private void btntoi_Click(object sender, EventArgs e)
+        {
+            if (vt < vtsach.Rows.Count - 1)
+            {
+                vt++;
+                DataRow r = vtsach.Rows[vt];
+                txtMasach.Text = r[0].ToString();
+                txtTensach.Text = r[1].ToString();
+                txttheloaisach.Text = r[2].ToString();
+                txttinhtrang.Text = r[3].ToString();
+                txtsoluong.Text = r[4].ToString();
+                txtnxb.Text = r[5].ToString();
+                txtnamxb.Text = r[6].ToString();
+                txttg.Text = r[7].ToString();
+                txtpage.Text = (1 + vt).ToString() + "/" + vtsach.Rows.Count.ToString();
+                btnlui.Enabled = true;
+            }
+            else btntoi.Enabled = false;
+        }
+        #endregion
+        #region cuoi
+        private void btncuoi_Click(object sender, EventArgs e)
+        {
+            if (vt < vtsach.Rows.Count-1)
+            {
+                vt = vtsach.Rows.Count - 1;
+                DataRow r = vtsach.Rows[vt];
+                txtMasach.Text = r[0].ToString();
+                txtTensach.Text = r[1].ToString();
+                txttheloaisach.Text = r[2].ToString();
+                txttinhtrang.Text = r[3].ToString();
+                txtsoluong.Text = r[4].ToString();
+                txtnxb.Text = r[5].ToString();
+                txtnamxb.Text = r[6].ToString();
+                txttg.Text = r[7].ToString();
+                txtpage.Text = (1 + vt).ToString() + "/" + vtsach.Rows.Count.ToString();
+                btndau.Enabled = true;
+            }
+            else btncuoi.Enabled = false;
+        }
+        #endregion
+        #region bat loi chu
+        private void txtsoluong_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <45 ||e.KeyChar>57)&& e.KeyChar!=8 && e.KeyChar!=45 &&e.KeyChar!=46)
+            {
+                e.Handled=true;
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "Không được nhập chữ";
+            }
+        }
+        private void txtnamxb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 45 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 45 && e.KeyChar != 46)
+            {
+                e.Handled = true;
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "Không được nhập chữ";
+            }
+        }
+        #endregion
+
+        private void btntimkiemttv_Click(object sender, EventArgs e)
+        {
+            string masach; 
+            bool kq = false;
+            for (int i = 0; i < vtsach.Rows.Count; i++)
+            {
+                DataRow r = vtsach.Rows[i];
+                masach = r[0].ToString();
+                if (masach.ToUpper() == txttimkiemma.Text.ToUpper())
+                {
+                    txtMasach.Text = r[0].ToString();
+                    txtTensach.Text = r[1].ToString();
+                    txttheloaisach.Text = r[2].ToString();
+                    txttinhtrang.Text = r[3].ToString();
+                    txtsoluong.Text = r[4].ToString();
+                    txtnxb.Text = r[5].ToString();
+                    txtnamxb.Text = r[6].ToString();
+                    txttg.Text = r[7].ToString();
+                    PICHINH.ImageLocation = r[8].ToString();
+                    kq = true;
+                    return;
+                }
+            }
+            if (kq == false)
+            {
+                MessageBox.Show("Sách nay khong ton tai");
+                txttimkiemma.SelectAll();
+                txttimkiemma.Focus();
+            }
+        }
+
+        //private void btnin1_Click(object sender, EventArgs e)
+        //{
+        //    insach r = new insach();
+        //    r.ShowDialog();
+            
+        //}
+
+        private void txtnamxb_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
