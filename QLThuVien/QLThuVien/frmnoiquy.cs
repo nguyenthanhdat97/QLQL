@@ -16,5 +16,15 @@ namespace QLThuVien
         {
             InitializeComponent();
         }
+
+	private void btnthoat_Click(object sender, EventArgs e)
+        {
+            DialogResult ketqua;
+            ketqua = MessageBox.Show("Ban Co Muon Thoat Ko?", "Thong Bao", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (ketqua == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }
