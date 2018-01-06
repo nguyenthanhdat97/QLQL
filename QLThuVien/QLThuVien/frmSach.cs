@@ -120,5 +120,281 @@ namespace QLThuVien
             dgvttsach.Columns[8].HeaderText = "Hình";
         }
         #endregion
+	#region masach
+        private string taomasach()
+        {
+            string masach;
+            Random r = new Random();
+            masach = "MS" + r.Next(50, 999).ToString();
+            return masach;
+        }
+        #endregion
+        #region Thêm
+        private void btnthemsach_Click(object sender, EventArgs e)
+        {
+            txtMasach.Clear();
+            txtTensach.Clear();
+            txtsoluong.Clear();
+            txttinhtrang.Clear();
+            txttheloaisach.Clear();
+            txtnamxb.Clear();
+            txtnxb.Clear();
+            txttg.Clear();
+            txtMasach.Text = taomasach();
+        }
+        #endregion
+        #region luu sach
+        private void luusach()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_LUUSACH";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string masach, ten, theloai, tinhtrang, nxb, namxb, tg,filehinh;
+            int soluong;
+            if (txtTensach.Text=="")
+            {
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "Tên không được trống";
+                txtTensach.Focus();
+                return;
+            }
+            if (txtnamxb.TextLength>4)
+            {
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "sai định dạng năm";
+                txtnamxb.Focus();
+                return;
+            }
+            if (txttg.Text == "")
+            {
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "Tg không được trống";
+                txttg.Focus();
+                return;
+            }
+            if (txtnxb.Text == "")
+            {
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "nxb không được trống";
+                txtnxb.Focus();
+                return;
+            }
+            filehinh = openFileDialog1.FileName;
+            hinh = File.ReadAllBytes(filehinh);
+            masach = txtMasach.Text;
+            ten = txtTensach.Text;
+            theloai = txttheloaisach.Text;           
+            soluong = int.Parse(txtsoluong.Text);
+            tinhtrang = txttinhtrang.Text;
+            nxb = txtnxb.Text;
+            namxb = txtnamxb.Text;
+            tg =  txttg.Text;            
+            cmd.Parameters.Add("@MaSach", masach);
+            cmd.Parameters.Add("@TenSach", ten);
+            cmd.Parameters.Add("@TheLoai", theloai);
+            cmd.Parameters.Add("@SoLuong", soluong);
+            cmd.Parameters.Add("@TinhTrang", tinhtrang);
+            cmd.Parameters.Add("@NXB", nxb);
+            cmd.Parameters.Add("@NamXB", namxb);
+            cmd.Parameters.Add("@TG", tg);
+            cmd.Parameters.Add("@HINH", hinh);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lblthongbao.ForeColor = Color.Red;
+                    lblthongbao.Text = "đã tồn tại sách";
+                    return;
+                }
+                else
+                {
+                    lblthongbao.ForeColor = Color.Red;
+                    lblthongbao.Text = "Lưu Thành Công";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }            
+        }
+
+        private void btnluusach_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            luusach();            
+            loaddlsach();
+            data_bingding();
+        }
+        #endregion
+        #region Xóa sach
+        private void xoasach()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_XOASACH";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string masach;
+            masach = txtMasach.Text;            
+            cmd.Parameters.Add("@MaSach", masach);
+            DialogResult kq1;
+            kq1 = MessageBox.Show("Bạn Thật Sự Muốn Xóa", "Chú Ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (kq1 == DialogResult.Yes)
+            {
+                try
+                {
+                    cmd.Parameters.Add("@kq",
+                    SqlDbType.Int).Direction =
+                        ParameterDirection.ReturnValue;
+                    cnn.Open();
+                    cmd.ExecuteNonQuery();
+                    int kq = (int)cmd.Parameters["@kq"].Value;
+                    if (kq == 1)
+                    {
+                        lblthongbao.ForeColor = Color.Red;
+                        lblthongbao.Text = "Đã tồn tại sách trong PMuon";
+                        return;
+                    }
+                    else if (kq == 2)
+                    {
+                        lblthongbao.ForeColor = Color.Red;
+                        lblthongbao.Text = "Đã tồn tại sách trong PNhắcTrả";
+                        return;
+                    }
+                    else if (kq == 3)
+                    {
+                        lblthongbao.ForeColor = Color.Red;
+                        lblthongbao.Text = "Đã tồn tại sách trong Sách Mượn";
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+                }
+                finally
+                {
+                    if (cnn != null)
+                        cnn.Close();
+                }
+            }
+            lblthongbao.ForeColor = Color.Red;
+            lblthongbao.Text = "Xóa Thành Công";
+        }
+        private void btnxoasach_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            xoasach();
+            loaddlsach();
+            data_bingding();
+        }
+        #endregion        
+        #region sua sach
+        private void Suasach()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_SUASACH";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string masach, ten, theloai, tinhtrang, nxb, namxb, tg, filehinh;
+            int soluong;
+            if (txtTensach.Text == "")
+            {
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "Tên không được trống";
+                txtTensach.Focus();
+                return;
+            }
+            if (txttg.Text == "")
+            {
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "Tg không được trống";
+                txttg.Focus();
+                return;
+            }
+            if (txtnxb.Text == "")
+            {
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "nxb không được trống";
+                txtnxb.Focus();
+                return;
+            }
+            masach = txtMasach.Text;
+            ten = txtTensach.Text;
+            theloai = txttheloaisach.Text;
+            soluong = int.Parse(txtsoluong.Text);
+            tinhtrang = txttinhtrang.Text;
+            nxb = txtnxb.Text;
+            namxb = txtnamxb.Text;
+            tg = txttg.Text;
+            filehinh = openFileDialog1.FileName;            
+            try
+            {
+                hinh = File.ReadAllBytes(filehinh);
+            }
+            catch (Exception)
+            {
+                hinh = null;
+            }
+            cmd.Parameters.Add("@MaSach", masach);
+            cmd.Parameters.Add("@TenSach", ten);
+            cmd.Parameters.Add("@TheLoai", theloai);
+            cmd.Parameters.Add("@SoLuong", soluong);
+            cmd.Parameters.Add("@TinhTrang", tinhtrang);
+            cmd.Parameters.Add("@NXB", nxb);
+            cmd.Parameters.Add("@NamXB", namxb);
+            cmd.Parameters.Add("@TG", tg);
+            cmd.Parameters.Add("@HINH", hinh);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lblthongbao.ForeColor = Color.Red;
+                    lblthongbao.Text = "Mã không tồn tại";
+                    return;
+                }
+                else
+                {
+                    lblthongbao.ForeColor = Color.Red;
+                    lblthongbao.Text = "Sửa Thành Công";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg sửa duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }
+        }
+        private void btnsuasach_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            Suasach();
+            loaddlsach();
+            data_bingding();
+        }        
+        #endregion
     }
 }
