@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Nội quy sử dụng thư viện
+ 1- Những quy định chung
+
+Điều 1. Toàn thể người học (học sinh, sinh viên, học viên cao học, nghiên cứu sinh) và cán bộ, giảng viên của Đại học Quốc gia Hà Nội (ĐHQGHN) đều được sử dụng Thẻ đa năng do các đơn vị trong ĐHQGHN cấp có tích hợp chức năng thư viện hoặc Thẻ Thư viện do Trung tâm cấp để sử dụng các sản phẩm dịch vụ tại các phòng Phục vụ bạn đọc (PVBĐ) của Trung tâm Thông tin - Thư viện (Thư viện).
+
+Điều 2. Không cho người khác mượn thẻ và không sử dụng thẻ của người khác; Khi bị mất thẻ phải báo ngay cho phòng Phục vụ bạn đọc (nơi tiếp nhận các yêu cầu về thẻ theo quy định tại văn bản Quy trình cấp thẻ, gia hạn thẻ) để khóa tài khoản. Chủ thẻ hoàn toàn chịu trách nhiệm nếu để người khác sử dụng thẻ của mình mượn tài liệu.
+
+Điều 3. Xuất trình thẻ tại quầy thủ thư; Bạn đọc không có thẻ cần xuất trình Giấy giới thiệu của cơ quan và Chứng minh thư nhân dân.
+
+Điều 4. Trang phục nghiêm túc; giữ gìn vệ sinh, không mang theo đồ ăn uống; giữ trật tự và tuyệt đối không hút thuốc, không sử dụng các vật dễ cháy nổ trong khu vực thư viện.
+
+2- Quy định tại phòng đọc
+
+Điều 5. Bạn đọc để tư trang và tài liệu cá nhân tại tủ gửi đồ, tự bảo quản tiền và tài sản. Dùng xong tủ phải khóa tủ trước khi trả chìa khóa.
+
+Điều 6. Bạn đọc tìm hiểu các nội dung hướng dẫn sử dụng thư viện tại Website: http://lic.vnu.edu.vn; tự tra cứu và tìm tài liệu trên giá theo bảng chỉ dẫn; không tráo đổi vị trí tài liệu; được lấy không quá 03 cuốn sách hoặc 1 loại báo/tạp chí cho 1 lần sử dụng. Đọc xong, để sách vào nơi quy định, để báo/tạp chí lên giá.
+
+Điều 7. Tuyệt đối không mang tài liệu ra khỏi phòng đọc khi chưa được phép của cán bộ thư viện. Nếu có nhu cầu mượn tài liệu về, bạn đọc làm thủ tục mượn tại quầy thủ thư.
+
+Điều 8. Chỉ được sử dụng máy tính để khai thác thông tin phục vụ mục đích học tập và nghiên cứu khoa học; Bạn đọc muốn sử dụng USB để sao chép thông tin phải được sự đồng ý của cán bộ thư viện.
+
+Điều 9. Thực hiện nếp sống văn minh: tránh gây tiếng ồn, không ngồi gác chân lên ghế, xếp lại ghế trước khi rời chỗ ngồi, không viết, vẽ, gạch, xóa lên bàn ghế...
+
+3- Quy định tại phòng mượn
+
+Điều 10. Viết phiếu yêu cầu đầy đủ, rõ ràng (không viết bằng bút mực đỏ, bút chì). Kiểm tra tài liệu, báo cho cán bộ thư viện tình trạng tài liệu (bị rách, bẩn) trước khi ra khỏi phòng mượn.
+
+Điều 11. Chính sách mượn tài liệu:
+
+muon
+
+
+(Ghi chú: STK = Sách tham khảo; GT = Giáo trình; GT-NVCL = Giáo trình Nhiệm vụ chiến lược)
+
+• Hết thời hạn mượn hoặc gia hạn, bạn đọc trả tài liệu chậm bị phạt 1.000đ/ngày/cuốn.
+• Học sinh chỉ được mượn tài liệu tại phòng Phục vụ bạn đọc gần cơ sở đào tạo, các đối tượng Bạn đọc khác được mượn tại tất cả các phòng Phục vụ bạn đọc (4 phòng).
+• Đối tượng Bạn đọc phải ký cược tiền khi mượn tài liệu bao gồm: Sinh viên tại chức, liên kết; Học viên cao học, Nghiên cứu sinh; Cán bộ, giảng viên hợp đồng cấp cơ sở.
+
+4- Những quy định về bảo quản tài liệu, tài sản, khen thưởng, kỷ luật
+
+Điều 12. Hết hời hạn mượn, nếu muốn mượn tiếp tài liệu cần làm thủ tục gia hạn. Bạn đọc trả tài liệu chậm bị phạt tiền theo quy định hiện hành.
+
+Điều 13. Đối tượng Bạn đọc phải ký cược tiền khi mượn tài liệu bao gồm: Sinh viên tại chức, liên kết; Học viên cao học, Nghiên cứu sinh; Cán bộ, giảng viên hợp đồng cấp cơ sở.
+
+Điều 14. Không tráo đổi, cắt xén, đánh dấu làm rách nát, hư hỏng tài liệu; không viết nháp hoặc ghi chép vào các trang tài liệu; không sao chụp trái phép tài liệu. Có nghĩa vụ cho kiểm tra tài liệu cũng như các vật dụng mang ra khỏi thư viện khi có yêu cầu của người có trách nhiệm.
+
+Điều 15. Nghiêm cấm mọi hành vi gây thiệt hại đến tài sản, thiết bị và cơ sở vật chất của thư viện.
+
+Điều 16. Khi người học ra trường, thôi học, ngừng học và khi cán bộ nghỉ hoặc chuyển công tác phải trả hết tài liệu đã mượn, thanh toán hết các khoản phạt, bồi thường (nếu có).
+
+Điều 17. Nếu bạn đọc vi phạm các quy định trong Nội quy này, tùy theo tính chất, mức độ sẽ phải chịu xử lý theo Quy định về xử lý vi phạm nội quy thư viện của Trung tâm với các hình thức sau: Nhắc nhở, cảnh cáo; Đình chỉ quyền sử dụng thư viện; Bồi thường thiệt hại; Thông báo về cơ sở quản lý, đào tạo; Đề nghị truy tố trước pháp luật.
+
+Điều 18. Khen thưởng bạn đọc có số lần mượn tài liệu hoặc số lần đến sử dụng thư viện nhiều nhất trong mỗi năm học và ưu tiên phục vụ bạn đọc thực hiện tốt Nội quy của Thư viện.
+
+Điều 19. Thư viện sẵn sàng tiếp nhận ý kiến đóng góp và giải đáp thắc mắc tại các địa chỉ sau:
+
+- Hòm thư góp ý đặt tại các khu vực phục vụ bạn đọc
+
+- Chát trực tuyến tại Website: http://lic.vnu.edu.vn/ và trao đổi qua Email:  lic@vnu.edu.vn
+                                                                                                                                             Hà Nội, ngày 10 tháng 09 năm 2014
+                                                                                                                                                                GIÁM ĐỐC
+
+                                                                                                                                                                   (đã ký)
+
+                                                                                                                                                       Nguyễn Hoàng Sơn
+</value>
+  </data>
+</root>
