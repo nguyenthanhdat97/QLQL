@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A9303DB9-896E-48BA-BAD7-D72EEEB32FFC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QLThuVien</RootNamespace>
+    <AssemblyName>QLThuVien</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v13.1, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v13.1.Core, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v13.1, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmdangky.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmdangky.Designer.cs">
+      <DependentUpon>frmdangky.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmnoiquy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmnoiquy.Designer.cs">
+      <DependentUpon>frmnoiquy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmthethuvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmthethuvien.Designer.cs">
+      <DependentUpon>frmthethuvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmtimkiemsach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtimkiemsach.Designer.cs">
+      <DependentUpon>frmtimkiemsach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Giaodien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Giaodien.Designer.cs">
+      <DependentUpon>Giaodien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuMuon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuMuon.Designer.cs">
+      <DependentUpon>frmPhieuMuon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSach.Designer.cs">
+      <DependentUpon>frmSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSachMuon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSachMuon.Designer.cs">
+      <DependentUpon>frmSachMuon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuNhacTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuNhacTra.Designer.cs">
+      <DependentUpon>frmPhieuNhacTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhanVien.Designer.cs">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="muontrasach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="muontrasach.Designer.cs">
+      <DependentUpon>muontrasach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="thongtinsach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="thongtinsach.Designer.cs">
+      <DependentUpon>thongtinsach.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmdangky.resx">
+      <DependentUpon>frmdangky.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmnoiquy.resx">
+      <DependentUpon>frmnoiquy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmthethuvien.resx">
+      <DependentUpon>frmthethuvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtimkiemsach.resx">
+      <DependentUpon>frmtimkiemsach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Giaodien.resx">
+      <DependentUpon>Giaodien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhanVien.resx">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuMuon.resx">
+      <DependentUpon>frmPhieuMuon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuNhacTra.resx">
+      <DependentUpon>frmPhieuNhacTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSach.resx">
+      <DependentUpon>frmSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSachMuon.resx">
+      <DependentUpon>frmSachMuon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="muontrasach.resx">
+      <DependentUpon>muontrasach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="thongtinsach.resx">
+      <DependentUpon>thongtinsach.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nhàu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oak_leaves_by_mistshadow2k4-d5iqe42.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\giay-dan-tuong-han-quoc-soho-5574-2--hoa-van-co-dien-chau-au_thumbnail_33965.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11016387-38.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sua-khoa-tai-nha-tphcm-minh-duc-ho-chi-minh_08102012111027.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Keys-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept-icon %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept-icon %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Keys-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept-icon %281%293.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-icon %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FAQ-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow-double-left-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow-double-left-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control-double-stop-left-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-green-arrow-left-end-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-green-arrow-right-end-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Other-Power-Restart-Metro-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-form-add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-form-edit-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-form-delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-icon %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Close-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-application-exit-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Other-Power-Restart-Metro-icon %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Printer-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-form-add-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-form-edit-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-form-delete-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-button-cancel-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application-form-magnify-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control-double-stop-left-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow-double-left-icon %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow-double-right-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brbs-e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Books-1-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Books-2-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Books-2-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\h.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ringmaster-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder-saved-search-icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
