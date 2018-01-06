@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-	#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -83,7 +83,11 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-	    // 
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -342,10 +346,207 @@
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bảng Thông Tin ";
-	}
+            // 
+            // btnxoasach
+            // 
+            this.btnxoasach.BackgroundImage = global::QLThuVien.Properties.Resources.application_form_delete_icon__1_;
+            this.btnxoasach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnxoasach.Location = new System.Drawing.Point(423, 19);
+            this.btnxoasach.Name = "btnxoasach";
+            this.btnxoasach.Size = new System.Drawing.Size(86, 25);
+            this.btnxoasach.TabIndex = 0;
+            this.btnxoasach.Text = "Xóa";
+            this.btnxoasach.UseVisualStyleBackColor = true;
+            this.btnxoasach.Click += new System.EventHandler(this.btnxoasach_Click);
+            // 
+            // btnthemsach
+            // 
+            this.btnthemsach.BackgroundImage = global::QLThuVien.Properties.Resources.Other_Power_Restart_Metro_icon__2_;
+            this.btnthemsach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnthemsach.Location = new System.Drawing.Point(25, 19);
+            this.btnthemsach.Name = "btnthemsach";
+            this.btnthemsach.Size = new System.Drawing.Size(86, 25);
+            this.btnthemsach.TabIndex = 0;
+            this.btnthemsach.Text = "Thêm";
+            this.btnthemsach.UseVisualStyleBackColor = true;
+            this.btnthemsach.Click += new System.EventHandler(this.btnthemsach_Click);
+            // 
+            // btnsuasach
+            // 
+            this.btnsuasach.BackgroundImage = global::QLThuVien.Properties.Resources.application_form_edit_icon__1_;
+            this.btnsuasach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnsuasach.Location = new System.Drawing.Point(286, 19);
+            this.btnsuasach.Name = "btnsuasach";
+            this.btnsuasach.Size = new System.Drawing.Size(86, 25);
+            this.btnsuasach.TabIndex = 0;
+            this.btnsuasach.Text = "Sửa";
+            this.btnsuasach.UseVisualStyleBackColor = true;
+            this.btnsuasach.Click += new System.EventHandler(this.btnsuasach_Click);
+            // 
+            // btnluusach
+            // 
+            this.btnluusach.BackgroundImage = global::QLThuVien.Properties.Resources.application_form_add_icon1;
+            this.btnluusach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnluusach.Location = new System.Drawing.Point(156, 19);
+            this.btnluusach.Name = "btnluusach";
+            this.btnluusach.Size = new System.Drawing.Size(86, 25);
+            this.btnluusach.TabIndex = 0;
+            this.btnluusach.Text = "Lưu";
+            this.btnluusach.UseVisualStyleBackColor = true;
+            this.btnluusach.Click += new System.EventHandler(this.btnluusach_Click);
+            // 
+            // lblhienthinv
+            // 
+            this.lblhienthinv.AutoSize = true;
+            this.lblhienthinv.Location = new System.Drawing.Point(22, -10);
+            this.lblhienthinv.Name = "lblhienthinv";
+            this.lblhienthinv.Size = new System.Drawing.Size(0, 13);
+            this.lblhienthinv.TabIndex = 2;
+            // 
+            // lblthongbao
+            // 
+            this.lblthongbao.AutoSize = true;
+            this.lblthongbao.Location = new System.Drawing.Point(539, 25);
+            this.lblthongbao.Name = "lblthongbao";
+            this.lblthongbao.Size = new System.Drawing.Size(0, 13);
+            this.lblthongbao.TabIndex = 4;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnin1);
+            this.groupBox3.Controls.Add(this.lblthongbao);
+            this.groupBox3.Controls.Add(this.lblhienthinv);
+            this.groupBox3.Controls.Add(this.btnluusach);
+            this.groupBox3.Controls.Add(this.btnsuasach);
+            this.groupBox3.Controls.Add(this.btnthemsach);
+            this.groupBox3.Controls.Add(this.btnxoasach);
+            this.groupBox3.Location = new System.Drawing.Point(3, 35);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1055, 64);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Xử Lý";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // btnin1
+            // 
+            this.btnin1.BackgroundImage = global::QLThuVien.Properties.Resources.Printer_icon;
+            this.btnin1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnin1.ForeColor = System.Drawing.Color.Black;
+            this.btnin1.Location = new System.Drawing.Point(949, 13);
+            this.btnin1.Name = "btnin1";
+            this.btnin1.Size = new System.Drawing.Size(90, 31);
+            this.btnin1.TabIndex = 5;
+            this.btnin1.Text = "    In";
+            this.btnin1.UseVisualStyleBackColor = true;
+            // 
+            // lbltieude
+            // 
+            this.lbltieude.AutoSize = true;
+            this.lbltieude.BackColor = System.Drawing.Color.Transparent;
+            this.lbltieude.Font = new System.Drawing.Font("Colonna MT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltieude.Location = new System.Drawing.Point(331, 7);
+            this.lbltieude.Name = "lbltieude";
+            this.lbltieude.Size = new System.Drawing.Size(334, 25);
+            this.lbltieude.TabIndex = 15;
+            this.lbltieude.Text = "DANH MỤC THÔNG TIN  SÁCH";
+            // 
+            // txtpage
+            // 
+            this.txtpage.Location = new System.Drawing.Point(291, 30);
+            this.txtpage.Name = "txtpage";
+            this.txtpage.Size = new System.Drawing.Size(193, 20);
+            this.txtpage.TabIndex = 1;
+            // 
+            // btndau
+            // 
+            this.btndau.BackgroundImage = global::QLThuVien.Properties.Resources.Actions_green_arrow_left_end_icon;
+            this.btndau.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btndau.Location = new System.Drawing.Point(31, 24);
+            this.btndau.Name = "btndau";
+            this.btndau.Size = new System.Drawing.Size(88, 28);
+            this.btndau.TabIndex = 0;
+            this.btndau.UseVisualStyleBackColor = true;
+            this.btndau.Click += new System.EventHandler(this.btndau_Click);
+            // 
+            // btnlui
+            // 
+            this.btnlui.BackgroundImage = global::QLThuVien.Properties.Resources.back_icon;
+            this.btnlui.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnlui.Location = new System.Drawing.Point(152, 25);
+            this.btnlui.Name = "btnlui";
+            this.btnlui.Size = new System.Drawing.Size(88, 28);
+            this.btnlui.TabIndex = 0;
+            this.btnlui.UseVisualStyleBackColor = true;
+            this.btnlui.Click += new System.EventHandler(this.btnlui_Click);
+            // 
+            // btntoi
+            // 
+            this.btntoi.BackgroundImage = global::QLThuVien.Properties.Resources.next_icon;
+            this.btntoi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btntoi.Location = new System.Drawing.Point(515, 22);
+            this.btntoi.Name = "btntoi";
+            this.btntoi.Size = new System.Drawing.Size(88, 28);
+            this.btntoi.TabIndex = 0;
+            this.btntoi.UseVisualStyleBackColor = true;
+            this.btntoi.Click += new System.EventHandler(this.btntoi_Click);
+            // 
+            // btncuoi
+            // 
+            this.btncuoi.BackgroundImage = global::QLThuVien.Properties.Resources.Actions_green_arrow_right_end_icon;
+            this.btncuoi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btncuoi.Location = new System.Drawing.Point(636, 19);
+            this.btncuoi.Name = "btncuoi";
+            this.btncuoi.Size = new System.Drawing.Size(88, 28);
+            this.btncuoi.TabIndex = 0;
+            this.btncuoi.UseVisualStyleBackColor = true;
+            this.btncuoi.Click += new System.EventHandler(this.btncuoi_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btncuoi);
+            this.groupBox4.Controls.Add(this.btntoi);
+            this.groupBox4.Controls.Add(this.btnlui);
+            this.groupBox4.Controls.Add(this.btndau);
+            this.groupBox4.Controls.Add(this.txtpage);
+            this.groupBox4.Location = new System.Drawing.Point(364, 443);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(736, 61);
+            this.groupBox4.TabIndex = 28;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Điều Khiền";
+            // 
+            // frmSach
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1100, 510);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.lbltieude);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Name = "frmSach";
+            this.Text = "regio";
+            this.Load += new System.EventHandler(this.Sach_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.PICHINH)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvttsach)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
         #endregion
 
-	private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
