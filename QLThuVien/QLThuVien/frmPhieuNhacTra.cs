@@ -114,5 +114,13 @@ namespace QLThuVien
             cnn.Close();
             return nv;
         }
+	private void hiendlnv()
+        {
+            cbomanv.DataSource = loadnv();
+            cbomanv.ValueMember = "MaNV";
+            cbomanv.DisplayMember = "TenNV";
+        }
+        #endregion
+        #region load thẻ thư viện
     }
 }
