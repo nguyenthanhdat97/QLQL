@@ -20,7 +20,24 @@ namespace QLThuVien
             InitializeComponent();
             cnn = new SqlConnection("Data Source=.;Initial Catalog=QLThuVien;Integrated Security=True");
         }
-	
+	 private void NhanVien_Load(object sender, EventArgs e)
+        {
+            txtManv.Enabled = false;
+            loadnvlenluoi();
+            A = label9.Text;
+            label9.Text = "";
+            timer1.Start();
+            data_bingding();
+            Hientieudecot();
+        }
+        #region xuly mã
+        private string taomanv()
+        {
+            string manv;
+            Random r = new Random();
+            manv ="NV"+ r.Next(50, 999).ToString();
+            return manv;
+        }
         
     }
 }
