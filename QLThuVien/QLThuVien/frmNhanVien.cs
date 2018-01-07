@@ -38,6 +38,23 @@ namespace QLThuVien
             manv ="NV"+ r.Next(50, 999).ToString();
             return manv;
         }
-        
+        #endregion
+        #region Doc du lieu len luoi
+        private DataTable docdulieu()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_LOADNHANVIEN";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            DataTable nhanvien = new DataTable();
+            cnn.Open();
+            nhanvien.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return nhanvien;
+        }
+        private void loadnvlenluoi()
+        {
+            dgvttnv.DataSource = docdulieu();
+        }
     }
 }
