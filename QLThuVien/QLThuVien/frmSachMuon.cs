@@ -21,7 +21,18 @@ namespace QLThuVien
             cnn = new SqlConnection("Data Source=.;Initial Catalog=QLThuVien;Integrated Security=True");
 
         }
-
+	 private void SachMuon_Load(object sender, EventArgs e)
+        {
+            loaddllenfile();
+            hiendlphieumuon();
+            hiendlsach();
+            A = label9.Text;
+            label9.Text = "";
+            timer1.Start();
+            hientieudecot();
+            data_bingding();
+        }
+        #region bingding
 
 
 
