@@ -122,5 +122,24 @@ namespace QLThuVien
         }
         #endregion
         #region load thẻ thư viện
+	
+        private DataTable loadTheThuVien()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_LOADTHETHUVIEN";
+            cmd.Connection = cnn;
+            DataTable ttv = new DataTable();
+            cnn.Open();
+            ttv.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return ttv;
+        }
+        private void hiendlthethuvien()
+        {
+            cbomathe.DataSource = loadTheThuVien();
+            cbomathe.ValueMember = "MaThe";
+            cbomathe.DisplayMember = "TenSV";
+        }
     }
 }
