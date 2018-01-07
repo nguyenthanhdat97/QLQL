@@ -56,5 +56,18 @@ namespace QLThuVien
         {
             dgvttnv.DataSource = docdulieu();
         }
+	#endregion
+        #region hiện tiêu đề cột
+        private void Hientieudecot()
+        {
+            dgvttnv.Columns[0].HeaderText = "Mã SV";
+            dgvttnv.Columns[1].HeaderText = "Tên SV";
+            dgvttnv.Columns[2].HeaderText = "Ngày Sinh";
+            dgvttnv.Columns[3].HeaderText = "Ngày Vào Làm";
+            dgvttnv.Columns[4].HeaderText = "Giới Tính";
+            dgvttnv.Columns[5].HeaderText = "Chức Vụ";
+            dgvttnv.Columns[6].HeaderText = "Địa Chỉ";
+            dgvttnv.Columns[7].HeaderText = "ĐiệnThoại";
+        }
     }
 }
