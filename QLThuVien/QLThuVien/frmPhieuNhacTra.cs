@@ -94,6 +94,13 @@ namespace QLThuVien
             cnn.Close();
             return sach;
         }
-        
+         private void hiendlsach()
+        {
+            cbomasach.DataSource = loadsach();
+            cbomasach.ValueMember = "MaSach";
+            cbomasach.DisplayMember = "TenSach";
+        }
+        #endregion
+        #region load nhanvien
     }
 }
