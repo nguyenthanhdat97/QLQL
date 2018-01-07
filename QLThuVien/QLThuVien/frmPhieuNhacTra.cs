@@ -82,7 +82,18 @@ namespace QLThuVien
         }
         #endregion
         #region load sach
-        
+           private DataTable loadsach()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_LOADSACH";
+            cmd.Connection = cnn;
+            DataTable sach = new DataTable();
+            cnn.Open();
+            sach.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return sach;
+        }
         
     }
 }
