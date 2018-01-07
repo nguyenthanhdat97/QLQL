@@ -13,14 +13,15 @@ namespace QLThuVien
 {
     public partial class frmPhieuNhacTra : Form
     {
-      string A;
+        string A;
         SqlConnection cnn;
         public frmPhieuNhacTra()
         {
             InitializeComponent();
             cnn = new SqlConnection("Data Source=.;Initial Catalog=QLThuVien;Integrated Security=True");
         }
-  	private void PhieuNhacTra_Load(object sender, EventArgs e)
+
+        private void PhieuNhacTra_Load(object sender, EventArgs e)
         {
             loaddllenfile();
             txtmapnt.Enabled = false;
@@ -41,7 +42,7 @@ namespace QLThuVien
             mapnt = "NV" + r.Next(50, 999).ToString();
             return mapnt;
         }
-	#endregion
+        #endregion
         #region bingding
         private void data_bingding()
         {
@@ -82,7 +83,7 @@ namespace QLThuVien
         }
         #endregion
         #region load sach
-           private DataTable loadsach()
+        private DataTable loadsach()
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -94,7 +95,7 @@ namespace QLThuVien
             cnn.Close();
             return sach;
         }
-         private void hiendlsach()
+        private void hiendlsach()
         {
             cbomasach.DataSource = loadsach();
             cbomasach.ValueMember = "MaSach";
@@ -102,7 +103,7 @@ namespace QLThuVien
         }
         #endregion
         #region load nhanvien
-	 private DataTable loadnv()
+        private DataTable loadnv()
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -114,7 +115,7 @@ namespace QLThuVien
             cnn.Close();
             return nv;
         }
-	private void hiendlnv()
+        private void hiendlnv()
         {
             cbomanv.DataSource = loadnv();
             cbomanv.ValueMember = "MaNV";
@@ -122,7 +123,6 @@ namespace QLThuVien
         }
         #endregion
         #region load thẻ thư viện
-	
         private DataTable loadTheThuVien()
         {
             SqlCommand cmd = new SqlCommand();
@@ -141,7 +141,7 @@ namespace QLThuVien
             cbomathe.ValueMember = "MaThe";
             cbomathe.DisplayMember = "TenSV";
         }
-	 #endregion
+        #endregion
         #region doc len file
         private DataTable docphieunhactra()
         {
@@ -155,7 +155,7 @@ namespace QLThuVien
             cnn.Close();
             return phieumuon;
         }
-	 private void loaddllenfile()
+        private void loaddllenfile()
         {
             dgvttpnt.DataSource = docphieunhactra();
         }
@@ -248,7 +248,7 @@ namespace QLThuVien
             } 
             
         }
-	private void btnluupnt_Click(object sender, EventArgs e)
+        private void btnluupnt_Click(object sender, EventArgs e)
         {
             huy_bingding();
             luuphieunhactra();
@@ -257,7 +257,7 @@ namespace QLThuVien
         }
         #endregion
         #region  sua phieu nhắc trả
-	 private void suaphieunhactra()
+        private void suaphieunhactra()
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "sp_SUAPHIEUNHACTRA";
@@ -333,7 +333,7 @@ namespace QLThuVien
                     cnn.Close();
             } 
         }
-	 private void btnsuapnt_Click(object sender, EventArgs e)
+        private void btnsuapnt_Click(object sender, EventArgs e)
         {
             huy_bingding();
             suaphieunhactra();
@@ -342,7 +342,7 @@ namespace QLThuVien
         }
         #endregion
         #region xoaphieumuon
-	 private void xoaphieumuon()
+        private void xoaphieumuon()
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "sp_XOAPHIEUNHACTRA";
@@ -402,5 +402,10 @@ namespace QLThuVien
             if (d == x)
             {
                 timer1.Stop();
+            }
+        }
+
+        
+        
     }
 }
