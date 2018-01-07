@@ -41,6 +41,47 @@ namespace QLThuVien
             mapnt = "NV" + r.Next(50, 999).ToString();
             return mapnt;
         }
+	#endregion
+        #region bingding
+        private void data_bingding()
+        {
+            txtmapnt.DataBindings.Add("Text", dgvttpnt.DataSource, "MaPNT");
+            cbomanv.DataBindings.Add("Selectedvalue", dgvttpnt.DataSource, "MaNV");
+            cbomasach.DataBindings.Add("Selectedvalue", dgvttpnt.DataSource, "MaSach");
+            cbomathe.DataBindings.Add("Selectedvalue", dgvttpnt.DataSource, "MaThe");
+            txtdgp.DataBindings.Add("Text", dgvttpnt.DataSource, "DonGiaPhat");
+            txtghichu.DataBindings.Add("Text", dgvttpnt.DataSource, "GhiChu");
+        }
+        private void huy_bingding()
+        {
+            if (txtmapnt.DataBindings != null)
+                txtmapnt.DataBindings.Clear();
+            if (txtghichu.DataBindings != null)
+                txtghichu.DataBindings.Clear();
+            if (dtngaplap.DataBindings != null)
+                dtngaplap.DataBindings.Clear();
+            if (txtdgp.DataBindings != null)
+                txtdgp.DataBindings.Clear();
+            if (cbomasach.DataBindings != null)
+                cbomasach.DataBindings.Clear();
+            if (cbomanv.DataBindings != null)
+                cbomanv.DataBindings.Clear();
+            if (cbomathe.DataBindings != null)
+                cbomathe.DataBindings.Clear();
+        }
+        #endregion
+        #region tiêu đề cột
+        private void hientieudecot()
+        {
+            dgvttpnt.Columns[0].HeaderText="Mã PNT";
+            dgvttpnt.Columns[1].HeaderText = "Mã The";
+            dgvttpnt.Columns[2].HeaderText = "Ngày Lập";
+            dgvttpnt.Columns[3].HeaderText = "Đơn Giám Phạt";
+            dgvttpnt.Columns[4].HeaderText = "Mã NV";
+            dgvttpnt.Columns[5].HeaderText = "Mã Sách";
+        }
+        #endregion
+        #region load sach
         
         
     }
