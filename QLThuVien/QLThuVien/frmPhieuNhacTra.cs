@@ -141,5 +141,19 @@ namespace QLThuVien
             cbomathe.ValueMember = "MaThe";
             cbomathe.DisplayMember = "TenSV";
         }
+	 #endregion
+        #region doc len file
+        private DataTable docphieunhactra()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_LOADPHIEUNHACTRA";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            DataTable phieumuon = new DataTable();
+            cnn.Open();
+            phieumuon.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return phieumuon;
+        }
     }
 }
