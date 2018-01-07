@@ -51,7 +51,18 @@ namespace QLThuVien
             if (txtsoluongsm.DataBindings != null)
                 txtsoluongsm.DataBindings.Clear();
         }
-
+	#endregion
+        #region tiêu đề cột
+        private void hientieudecot()
+        {
+            dgvsachmuon.Columns[0].HeaderText = "Mã PM";
+            dgvsachmuon.Columns[1].HeaderText = "Mã Sách";
+            dgvsachmuon.Columns[2].HeaderText = "Tình Trạng";
+            dgvsachmuon.Columns[3].HeaderText = "SL Sách Mượn";
+            dgvsachmuon.Columns[4].HeaderText = "Ngày Trả";
+        }
+        #endregion
+        #region load sach
 
 
 
