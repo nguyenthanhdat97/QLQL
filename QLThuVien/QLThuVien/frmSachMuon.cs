@@ -293,6 +293,68 @@ namespace QLThuVien
                     cnn.Close();
             } 
         }
+	 private void btnsuanv_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            suasachmuon();
+            loaddllenfile();
+            data_bingding();
+        }
+        #endregion
+        #region xoasachmuon
+        private void xoasachmuon()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_XOASACHMUON";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string mapm,masach;
+            mapm = cbomapm.SelectedValue.ToString();
+            masach = cbomasach.SelectedValue.ToString();
+            cmd.Parameters.AddWithValue("@MaPM", mapm);
+            cmd.Parameters.AddWithValue("@MaSach", masach);
+            DialogResult kq1;
+            kq1 = MessageBox.Show("Bạn Thật Sự Muốn Xóa", "Chú Ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (kq1 == DialogResult.Yes)
+            {
+                try
+                {
+                    cmd.Parameters.Add("@kq",
+                    SqlDbType.Int).Direction =
+                        ParameterDirection.ReturnValue;
+                    cnn.Open();
+                    cmd.ExecuteNonQuery();
+                    int kq = (int)cmd.Parameters["@kq"].Value;
+                    if (kq == 1)
+                    {
+                        lblthongbaosm.ForeColor = Color.Red;
+                        lblthongbaosm.Text = "Không tồn tại PM";
+                        return;
+                    }
+                    else if (kq == 2)
+                    {
+                        lblthongbaosm.ForeColor = Color.Red;
+                        lblthongbaosm.Text = "Không tồn tại sách ";
+                        return;
+                    }
+                    else
+                    {
+                        lblthongbaosm.ForeColor = Color.Red;
+                        lblthongbaosm.Text = "Xóa Thành Công"; 
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+                }
+                finally
+                {
+                    if (cnn != null)
+                        cnn.Close();
+                } 
+            }            
+        }
 
 
     }
