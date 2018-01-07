@@ -69,5 +69,36 @@ namespace QLThuVien
             dgvttnv.Columns[6].HeaderText = "Địa Chỉ";
             dgvttnv.Columns[7].HeaderText = "ĐiệnThoại";
         }
+	  #endregion
+        #region xử lý bingding
+        private void data_bingding()
+        {
+            txtManv.DataBindings.Add("Text", dgvttnv.DataSource, "MaNV");
+            txtTennv.DataBindings.Add("Text",dgvttnv.DataSource,"TenNV");
+            cboGioitinhnv.DataBindings.Add("Text",dgvttnv.DataSource,"Gioitinh");
+            txtchucvunv.DataBindings.Add("Text",dgvttnv.DataSource,"ChucVuNV");
+            txtDiachinv.DataBindings.Add("Text",dgvttnv.DataSource,"DiaChiNV");
+            txtDienthoainv.DataBindings.Add("Text",dgvttnv.DataSource,"DienThoai");
+        }
+        private void Huy_bingding()
+        {
+            if (txtManv.DataBindings !=null)
+                txtManv.DataBindings.Clear();
+            if (txtTennv.DataBindings != null)
+                txtTennv.DataBindings.Clear();
+            if (txtDiachinv.DataBindings != null)
+                txtDiachinv.DataBindings.Clear();
+            if (txtchucvunv.DataBindings != null)
+                txtchucvunv.DataBindings.Clear();
+            if (dtpNgaysinhnv.DataBindings != null)
+                dtpNgaysinhnv.DataBindings.Clear();
+            if (dtngayvaolam.DataBindings != null)
+                dtngayvaolam.DataBindings.Clear();
+            if (txtDienthoainv.DataBindings != null)
+                txtDienthoainv.DataBindings.Clear();
+            if (cboGioitinhnv.DataBindings != null)
+                cboGioitinhnv.DataBindings.Clear();
+
+        }
     }
 }
