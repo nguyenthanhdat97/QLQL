@@ -248,5 +248,14 @@ namespace QLThuVien
             } 
             
         }
+	private void btnluupnt_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            luuphieunhactra();
+            loaddllenfile();
+            data_bingding();
+        }
+        #endregion
+        #region  sua phieu nhắc trả
     }
 }
