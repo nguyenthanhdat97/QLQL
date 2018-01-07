@@ -101,7 +101,24 @@ namespace QLThuVien
             cbomapm.ValueMember = "MaPM";
             cbomapm.DisplayMember = "TenPM";
         }
-
+	 #endregion
+        #region doc len file
+        private DataTable docsachmuon()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_LOADSACHMUON";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            DataTable sachmuon = new DataTable();
+            cnn.Open();
+            sachmuon.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return sachmuon;
+        }
+        private void loaddllenfile()
+        {
+            dgvsachmuon.DataSource = docsachmuon();
+        }
 
 
     }
