@@ -119,6 +119,94 @@ namespace QLThuVien
         {
             dgvsachmuon.DataSource = docsachmuon();
         }
+	 #endregion
+        #region them sachmuon
+        private void btnthemnv_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            txtsoluongsm.Clear();
+            txttinhtrang.Clear();
+            data_bingding();
+        }
+        #endregion
+        #region luusachmuon
+        private void luusachmuon()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_LUUSACHMUON";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string mapm, masach, tinhtrang;
+            int slm;
+            DateTime ngaytra;            
+            mapm = cbomapm.SelectedValue.ToString(); ;
+            masach = cbomasach.SelectedValue.ToString() ;
+            slm = int.Parse(txtsoluongsm.Text);
+            if (slm>3 || slm<1)
+            {
+                lblthongbaosm.ForeColor = Color.Red;
+                lblthongbaosm.Text = "Chỉ có thể mượn tối đa 3 và tối thiểu 1";
+                txtsoluongsm.Focus();
+                return;
+            }
+            if (cbomapm.Text=="")
+            {
+                lblthongbaosm.ForeColor = Color.Red;
+                lblthongbaosm.Text = "Phải chọn pm";
+                cbomapm.Focus();
+                return;
+            }
+            if (cbomasach.Text=="")
+            {
+                lblthongbaosm.ForeColor = Color.Red;
+                lblthongbaosm.Text = "Phải chọn Sách";
+                cbomapm.Focus();
+                return;
+            }
+            tinhtrang = txttinhtrang.Text;
+            ngaytra = DateTime.Parse(dtngayphaitra.Value.ToString());          
+            cmd.Parameters.Add("@MaPM", mapm);
+            cmd.Parameters.Add("@MaSach", masach);
+            cmd.Parameters.Add("@TinhTrang", tinhtrang);
+            cmd.Parameters.Add("@SLSachMuon", slm);
+            cmd.Parameters.Add("@NgayTra", ngaytra);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lblthongbaosm.ForeColor = Color.Red;
+                    lblthongbaosm.Text = "Không tồn tại sách";
+                    return;
+                }
+                else if (kq == 2)
+                {
+                    lblthongbaosm.ForeColor = Color.Red;
+                    lblthongbaosm.Text = "Không tồn tại phiếu mượn";
+                    return;
+                }
+                else
+                {
+                    lblthongbaosm.ForeColor = Color.Red;
+                    lblthongbaosm.Text = "Lưu Thành Công";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }             
+        }
 
 
     }
