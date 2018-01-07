@@ -333,5 +333,14 @@ namespace QLThuVien
                     cnn.Close();
             } 
         }
+	 private void btnsuapnt_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            suaphieunhactra();
+            loaddllenfile();
+            data_bingding();
+        }
+        #endregion
+        #region xoaphieumuon
     }
 }
