@@ -342,5 +342,65 @@ namespace QLThuVien
         }
         #endregion
         #region xoaphieumuon
+	 private void xoaphieumuon()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_XOAPHIEUNHACTRA";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string mapnt;           
+            mapnt = txtmapnt.Text;            
+            cmd.Parameters.Add("@MaPNT", mapnt);
+            DialogResult kq;
+            kq = MessageBox.Show("Bạn Thật Sự Muốn Xóa", "Chú Ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (kq == DialogResult.Yes)
+            {
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+            }
+            lblthongbaopnt.ForeColor = Color.Red;
+            lblthongbaopnt.Text = "Xóa Thành Công";
+        }
+        private void btnxoapnt_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            xoaphieumuon();
+            loaddllenfile();
+            data_bingding();
+        }
+        #endregion
+        #region THOAT
+        private void btn_Click(object sender, EventArgs e)
+        {
+            DialogResult kq;
+            kq = MessageBox.Show("Bạn Thật Sự Muốn Xóa", "Chú Ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (kq == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+        #endregion
+        private void txtdgp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 45 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 45 && e.KeyChar != 46)
+            {
+                e.Handled = true;
+                lblthongbaopnt.ForeColor = Color.Red;
+                lblthongbaopnt.Text = "Không được nhập chữ";
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int d = 0, x;
+            x = A.Length;
+            d++;
+            string a = A.Substring(0, 1);
+            A = A.Substring(1, A.Length - 1);
+            label9.Text = label9.Text + a;
+            if (d == x)
+            {
+                timer1.Stop();
     }
 }
