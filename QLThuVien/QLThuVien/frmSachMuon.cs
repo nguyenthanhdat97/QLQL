@@ -81,6 +81,26 @@ namespace QLThuVien
             cbomasach.ValueMember = "MaSach";
             cbomasach.DisplayMember = "TenSach";
         }
+	 #endregion
+        #region load phieumuon
+        private DataTable loadPM()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_LOADPHIEUMUON";
+            cmd.Connection = cnn;
+            DataTable phieumuon = new DataTable();
+            cnn.Open();
+            phieumuon.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return phieumuon;
+        }
+        private void hiendlphieumuon()
+        {
+            cbomapm.DataSource = loadPM();
+            cbomapm.ValueMember = "MaPM";
+            cbomapm.DisplayMember = "TenPM";
+        }
 
 
 
