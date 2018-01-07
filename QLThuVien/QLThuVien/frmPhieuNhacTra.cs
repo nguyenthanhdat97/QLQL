@@ -102,5 +102,17 @@ namespace QLThuVien
         }
         #endregion
         #region load nhanvien
+	 private DataTable loadnv()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_LOADNHANVIEN";
+            cmd.Connection = cnn;
+            DataTable nv = new DataTable();
+            cnn.Open();
+            nv.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return nv;
+        }
     }
 }
