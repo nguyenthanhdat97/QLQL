@@ -155,5 +155,98 @@ namespace QLThuVien
             cnn.Close();
             return phieumuon;
         }
+	 private void loaddllenfile()
+        {
+            dgvttpnt.DataSource = docphieunhactra();
+        }
+        #endregion
+        #region them phiếu nhắc trả
+        private void btnthemnv_Click(object sender, EventArgs e)
+        {
+            txtmapnt.Clear();
+            txtghichu.Clear();
+            //txttennv.Clear();
+            txtdgp.Clear();
+            txtmapnt.Text = taomapnt();
+        }
+        #endregion
+        #region luuphieunhactra
+        private void luuphieunhactra()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_LUUPHIEUNHACTRA";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string mapnt,manv, mathe, masach,ghichu;
+            double dongiaphat;
+            DateTime ngaylap;
+            mapnt = txtmapnt.Text;            
+            manv=cbomanv.SelectedValue.ToString();
+            mathe = cbomathe.SelectedValue.ToString();
+            masach = cbomasach.SelectedValue.ToString();
+            ghichu = txtghichu.Text;
+            ngaylap = DateTime.Parse(dtngaplap.Value.ToString());
+            if (txtdgp.Text=="")
+            {
+                dongiaphat = 0;
+            }
+            else dongiaphat = double.Parse(txtdgp.Text);
+            cmd.Parameters.Add("@MaPNT", mapnt);
+            cmd.Parameters.Add("@NgayLap", ngaylap);
+            cmd.Parameters.Add("@DonGiaPhat", dongiaphat);
+            cmd.Parameters.Add("@MaNV", manv);
+            cmd.Parameters.Add("@MaSach", masach);
+            cmd.Parameters.Add("@MaThe", mathe);
+            cmd.Parameters.Add("@GhiChu", ghichu);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lblthongbaopnt.ForeColor = Color.Red;
+                    lblthongbaopnt.Text = "Đã tồn tại PNT";
+                    return;
+                }
+                else if (kq == 2)
+                {
+                    lblthongbaopnt.ForeColor = Color.Red;
+                    lblthongbaopnt.Text = "Không tồn tại nhân viên";
+                    return;
+                }
+                else if (kq == 3)
+                {
+                    lblthongbaopnt.ForeColor = Color.Red;
+                    lblthongbaopnt.Text = "Không tồn tại Sinh Viên";
+                    return;
+                }
+                else if (kq == 4)
+                {
+                    lblthongbaopnt.ForeColor = Color.Red;
+                    lblthongbaopnt.Text = "Không tồn tại Sách";
+                    return;
+                }
+                else
+                {
+                    lblthongbaopnt.ForeColor = Color.Red;
+                    lblthongbaopnt.Text = "Lưu Thành công";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            } 
+            
+        }
     }
 }
