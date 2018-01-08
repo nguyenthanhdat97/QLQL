@@ -476,5 +476,215 @@ namespace QLThuVien
             }
             else btndau1.Enabled = false;
         }
+	 #endregion                
+	#endregion
+	#region load SACH
+        private DataTable docsach()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_LOADSACH";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            DataTable sach = new DataTable();
+            cnn.Open();
+            sach.Load(cmd.ExecuteReader());
+            cnn.Close();
+            return sach;
+        }
+        private void loaddlsach()
+        {
+            cbomasach.DataSource = docsach();
+            cbomasach.ValueMember = "MaSach";
+            cbomasach.DisplayMember = "TenSach";
+        }
+        #endregion
+
+
+        #region XU LY PHIEU MUON
+        #region thempm
+        private void btnthempm_Click(object sender, EventArgs e)
+        {
+            txtMapm.Clear();
+            txtMapm.Text = taomapm();
+        }
+        #endregion
+        #region luuphieumuon
+        private void luuphieumuon()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_Luuphieumuonsinhvien";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string mapm, mathe, masach;
+            DateTime ngaymuon;
+            mapm = txtMapm.Text;
+            masach = cbomasach.SelectedValue.ToString();
+            mathe = txtMa.Text;
+            ngaymuon = DateTime.Parse(dtpNgaymuon.Value.ToString());
+            cmd.Parameters.AddWithValue("@MaPM", mapm);
+            cmd.Parameters.AddWithValue("@MaSach", masach);
+            cmd.Parameters.AddWithValue("@MaThe", mathe);
+            cmd.Parameters.AddWithValue("@NgayMuon", ngaymuon);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Đã tồn tại phiếu mượn";
+                    return;
+                }
+                else if (kq == 2)
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Không tồn tại sách ";
+                    return;
+                }
+                else if (kq == 3)
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Không tồn tại Sinh Viên";
+                    return;
+                }
+                else if (kq == 4)
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Sinh viên mượn không quá 3 Quyển";
+                    return;
+                }
+                else
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Luu Thành Công";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }
+        }
+        private void btnluupm_Click(object sender, EventArgs e)
+        {            
+            luuphieumuon();
+            Hienbangpm(txtMa.Text);
+            docthethuvien();
+        }
+        #endregion
+        #region docpm
+        private DataTable docphieumuon(string mathe)
+        {
+            DataTable pmsv = new DataTable();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_Docphieumuonsinhvien";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            //masv = txtmasv.Text;
+            cmd.Parameters.AddWithValue("@mathe", mathe);
+            try
+            {
+                cnn.Open();
+                pmsv.Load(cmd.ExecuteReader());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Loi khong doc duoc phieu muon",e.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }
+            return pmsv;
+        }
+        private void Hienbangpm(string mathe)
+        {
+            huybingdingketqua();
+            dgvds1.DataSource = docphieumuon(mathe);
+            bingdingketqua();
+        }
+        #endregion
+        #region bingdingkq
+        private void bingdingketqua()
+        {
+            cbomasach.DataBindings.Add("SelectedValue", dgvds1.DataSource, "MaSach");
+            txtMapm.DataBindings.Add("Text", dgvds1.DataSource, "MaPM");
+        }
+        private void huybingdingketqua()
+        {
+            if (cbomasach.DataBindings != null)
+                cbomasach.DataBindings.Clear();
+            if (txtMapm.DataBindings != null)
+                txtMapm.DataBindings.Clear();
+        }
+        #endregion
+        #region  sua phieu muon
+        private void suaphieumuon()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_SUAPHIEUMUON";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string mapm, mathe, masach;
+            DateTime ngaymuon;
+            mapm = txtMapm.Text;
+            masach = cbomasach.SelectedValue.ToString();
+            mathe = txtMa.Text;
+            ngaymuon = DateTime.Parse(dtpNgaymuon.Value.ToString());
+            cmd.Parameters.Add("@MaPM", mapm);
+            cmd.Parameters.Add("@MaSach", masach);
+            cmd.Parameters.Add("@MaThe", mathe);
+            cmd.Parameters.Add("@NgayMuon", ngaymuon);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "không tồn tại phiếu mượn";
+                    return;
+                }
+                else if (kq == 1)
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Không tồn tại sách ";
+                    return;
+                }
+                else if (kq == 1)
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Không tồn tại Sinh Viên";
+                    return;
+                }
+                else
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Sửa Thành Công";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }
+        }
     }
 }
