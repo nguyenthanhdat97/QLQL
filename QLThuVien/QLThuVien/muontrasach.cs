@@ -38,6 +38,14 @@ namespace QLThuVien
             txtmathe1.Enabled = false;
         }
         #region hiện thị mã pnt
-
+	private string taomapnt()
+        {
+            string mapnt;
+            Random r = new Random();
+            mapnt = "NV" + r.Next(50, 999).ToString();
+            return mapnt;
+        }
+        #endregion
+        #region docthethuvien
     }
 }
