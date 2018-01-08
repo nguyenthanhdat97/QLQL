@@ -686,5 +686,242 @@ namespace QLThuVien
                     cnn.Close();
             }
         }
+	  private void btnsuapm_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            suaphieumuon();
+            Hienbangpm(txtMa.Text);
+            docthethuvien();
+            data_bingding();
+        }
+        #endregion
+        #region xoa phieumuon
+        private void xoaphieumuon()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_Xoaphieumuonsinhvien";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string mapm;
+            mapm = txtMapm.Text;
+            cmd.Parameters.Add("@MaPM", mapm);
+            DialogResult kq1;
+            kq1 = MessageBox.Show("Bạn Thật Sự Muốn Xóa", "Chú Ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Đã tồn tại PM trong sách mượn";
+                    return;
+                }
+                else
+                {
+                    lbltbpm.ForeColor = Color.Red;
+                    lbltbpm.Text = "Xóa Thành Công";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }
+        }
+        private void btnxoapm_Click(object sender, EventArgs e)
+        {
+            huybingdingketqua();
+            xoaphieumuon();
+            Hienbangpm(txtMa.Text);
+        }
+        #endregion
+        #endregion
+
+        #region SINH VIEN CẦN NHẮC TRẢ
+        #region bingding
+        private void data_bingding2()
+        {
+
+        }
+        private void huy_bingding2()
+        {
+            if (dtngaysinh1.DataBindings != null)
+                dtngaysinh1.DataBindings.Clear();
+            if (txtdienthoai.DataBindings != null)
+                txtdienthoai.DataBindings.Clear();
+            if (txtmathe1.DataBindings != null)
+                txtmathe1.DataBindings.Clear();
+            if (txtten1.DataBindings != null)
+                txtten1.DataBindings.Clear();
+            if (dttao1.DataBindings != null)
+                dttao1.DataBindings.Clear();
+            if (dthethan1.DataBindings != null)
+                dthethan1.DataBindings.Clear();
+            if (txtdc1.DataBindings != null)
+                txtdc1.DataBindings.Clear();
+            if (cbogt.DataBindings != null)
+                cbogt.DataBindings.Clear();
+        }
+        #endregion
+        #region luu the thu vien 2
+        private void luusinhvien2()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_LUUTHETHUVIEN";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string ma, ten, diachi, dt;
+            DateTime ngaytao, ngayhethan, ngaysinh;
+            bool gioitinh;
+            ma = txtmathe1.Text;
+            ten = txtten1.Text;
+            diachi = txtdc1.Text;
+            dt = txtdienthoai.Text;
+            ngayhethan = DateTime.Parse(dthethan1.Value.ToString());
+            ngaytao = DateTime.Parse(dttao1.Value.ToString());
+            ngaysinh = DateTime.Parse(dtngaysinh1.Value.ToString());
+            if (DateTime.Now.Year - ngaysinh.Year > 85 || DateTime.Now.Year - ngaysinh.Year < 18)
+            {
+                lblthongbao1.ForeColor = Color.Red;
+                lblthongbao1.Text = "sinh viên phải đủ tuổi từ 18-85";
+                dtngaysinh1.Focus();
+                return;
+            }
+            if (txtten1.Text == "")
+            {
+                lblthongbao1.ForeColor = Color.Red;
+                lblthongbao1.Text = "Tên không được để trống";
+                txtten1.Focus();
+                return;
+            }
+            if (txtdc1.Text == "")
+            {
+                lblthongbao1.ForeColor = Color.Red;
+                lblthongbao1.Text = "Địa chỉ không được để trống";
+                txtdc1.Focus();
+                return;
+            }
+            if (cbogt.Text == "Nam")
+            {
+                gioitinh = true;
+            }
+            else gioitinh = false;
+            cmd.Parameters.Add("@MaThe", ma);
+            cmd.Parameters.Add("@TenSV", ten);
+            cmd.Parameters.Add("@GioiTinh", gioitinh);
+            cmd.Parameters.Add("@NgaySinh", ngaysinh);
+            cmd.Parameters.Add("@DiaChiSV", diachi);
+            cmd.Parameters.Add("@DienThoai", dt);
+            cmd.Parameters.Add("@NgayTao", ngaytao);
+            cmd.Parameters.Add("@NgayHetHan", ngayhethan);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lblthongbao1.ForeColor = Color.Red;
+                    lblthongbao1.Text = "đã tồn tại TheThuViện";
+                    return;
+                }
+                else
+                {
+                    lblthongbao1.ForeColor = Color.Red;
+                    lblthongbao1.Text = "Lưu Thành Công";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }            
+        }
+        private void btnluu2_Click(object sender, EventArgs e)
+        {
+            huy_bingding2();
+            luusinhvien2();
+            docthethuvien();
+            data_bingding2();
+        }
+        #endregion
+        #region  sua thethuvien trong NHẮC TRẢ
+        private void suathethuvien2()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_SUATHETHUVIEN";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string ma, ten, diachi, dt;
+            DateTime ngaytao, ngayhethan, ngaysinh;
+            bool gioitinh;
+            ma = txtMa.Text;
+            ten = txtTensv.Text;
+            diachi = txtdiachisv.Text;
+            dt = txtdt.Text;
+            ngayhethan = DateTime.Parse(dtngayhethan.Value.ToString());
+            ngaytao = DateTime.Parse(dtngaytao.Value.ToString());
+            ngaysinh = DateTime.Parse(dtngaysinh.Value.ToString());
+            if (cboGioitinh.Text == "Nam")
+            {
+                gioitinh = true;
+            }
+            else gioitinh = false;
+            cmd.Parameters.Add("@MaThe", ma);
+            cmd.Parameters.Add("@TenSV", ten);
+            cmd.Parameters.Add("@GioiTinh", gioitinh);
+            cmd.Parameters.Add("@NgaySinh", ngaysinh);
+            cmd.Parameters.Add("@DiaChiSV", diachi);
+            cmd.Parameters.Add("@DienThoai", dt);
+            cmd.Parameters.Add("@NgayTao", ngaytao);
+            cmd.Parameters.Add("@NgayHetHan", ngayhethan);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lblthongbao1.ForeColor = Color.Red;
+                    lblthongbao1.Text = "đã tồn tại TheThuViện";
+                    return;
+                }
+                else
+                {
+                    lblthongbao1.ForeColor = Color.Red;
+                    lblthongbao1.Text = "Sửa Thành Công";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }            
+        }  
     }
 }
