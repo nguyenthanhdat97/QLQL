@@ -923,5 +923,277 @@ namespace QLThuVien
                     cnn.Close();
             }            
         }  
+	 private void btnsua2_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            suathethuvien2();
+            docthethuvien();
+            data_bingding();
+        }
+        #endregion
+        #region xoathethuvien
+        private void Xoasinhvien2()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_XOATHETHUVIEN";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string mathe;
+            mathe = txtmathe1.Text;
+            cmd.Parameters.Add("@MaThe", mathe);
+            DialogResult kq1;
+            kq1 = MessageBox.Show("Bạn Thật Sự Muốn Xóa", "Chú Ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (kq1 == DialogResult.Yes)
+            {
+                try
+                {
+                    cmd.Parameters.Add("@kq",
+                    SqlDbType.Int).Direction =
+                        ParameterDirection.ReturnValue;
+                    cnn.Open();
+                    cmd.ExecuteNonQuery();
+                    int kq = (int)cmd.Parameters["@kq"].Value;
+                    if (kq == 1)
+                    {
+                        lblthongbao1.ForeColor = Color.Red;
+                        lblthongbao1.Text = "đã tồn tại TheThuViện trong phieu muon";
+                        return;
+                    } if (kq == 2)
+                    {
+                        lblthongbao1.ForeColor = Color.Red;
+                        lblthongbao1.Text = "đã tồn tại TheThuViện trong phieu nhac tra";
+                        return;
+                    }
+                    else
+                    {
+                        lblthongbao1.ForeColor = Color.Red;
+                        lblthongbao1.Text = "Xóa Thành Công";
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+                }
+                finally
+                {
+                    if (cnn != null)
+                        cnn.Close();
+                }            
+            }
+            
+        }
+        private void btnxoa2_Click(object sender, EventArgs e)
+        {
+            huy_bingding2();
+            Xoasinhvien2();
+            docthethuvien();
+            data_bingding2();
+        }
+        #endregion        
+        #region TTVdautien
+        private void hiensvdautien2()
+        {
+            txtpage.Text = vt.ToString();
+            vtttv = new DataTable();
+            vtttv = docthethuvien();
+            DataRow r = vtttv.Rows[vt];
+            txtmathe1.Text = r[0].ToString();
+            txtten1.Text = r[1].ToString();
+            cbogt.Text = r[2].ToString();
+            dtngaysinh1.Text = r[3].ToString();
+            txtdc1.Text = r[4].ToString();
+            txtdienthoai.Text = r[5].ToString();
+            dttao1.Text = r[6].ToString();
+            dthethan1.Text = r[7].ToString();
+            txtpage1.Text = vt.ToString();
+            txtpage1.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+        }
+        #endregion
+        #region lui 
+        private void btnlui_Click(object sender, EventArgs e)
+        {
+         if (vt > 0)
+            {
+                vt--;
+                DataRow r = vtttv.Rows[vt];
+                txtmathe1.Text = r[0].ToString();
+                txtten1.Text = r[1].ToString();
+                cbogt.Text = r[2].ToString();
+                dtngaysinh1.Text = r[3].ToString();
+                txtdc1.Text = r[4].ToString();
+                txtdienthoai.Text = r[5].ToString();
+                dttao1.Text = r[6].ToString();
+                dthethan1.Text = r[7].ToString();
+                txtpage1.Text = vt.ToString();
+                txtpage1.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+                btntoi1.Enabled = true;
+            }
+            else btnlui1.Enabled = false;
+        }
+        #endregion
+        #region dau
+        private void btndau_Click(object sender, EventArgs e)
+        {
+            if (vt > 0)
+            {
+                vt = 0;
+                DataRow r = vtttv.Rows[vt];
+                txtmathe1.Text = r[0].ToString();
+                txtten1.Text = r[1].ToString();
+                cbogt.Text = r[2].ToString();
+                dtngaysinh1.Text = r[3].ToString();
+                txtdc1.Text = r[4].ToString();
+                txtdienthoai.Text = r[5].ToString();
+                dttao1.Text = r[6].ToString();
+                dthethan1.Text = r[7].ToString();
+                txtpage1.Text = vt.ToString();
+                txtpage1.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+                btncuoi1.Enabled = true;
+            }
+            else btndau1.Enabled = false;
+        }
+        #endregion                
+        #region toi
+        private void btntoi_Click(object sender, EventArgs e)
+        {
+            if (vt < vtttv.Rows.Count - 1)
+            {
+                vt++;
+                DataRow r = vtttv.Rows[vt];
+                txtmathe1.Text = r[0].ToString();
+                txtten1.Text = r[1].ToString();
+                cbogt.Text = r[2].ToString();
+                dtngaysinh1.Text = r[3].ToString();
+                txtdc1.Text = r[4].ToString();
+                txtdienthoai.Text = r[5].ToString();
+                dttao1.Text = r[6].ToString();
+                dthethan1.Text = r[7].ToString();
+                txtpage1.Text = vt.ToString();
+                txtpage1.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+                btnlui1.Enabled = true;
+            }
+            else btntoi1.Enabled = false;
+        }
+        #endregion    
+        #region cuoi
+        private void btncuoi_Click(object sender, EventArgs e)
+        {
+            if (vt < vtttv.Rows.Count - 1)
+            {
+                vt = vtttv.Rows.Count - 1;
+                DataRow r = vtttv.Rows[vt];
+                txtmathe1.Text = r[0].ToString();
+                txtten1.Text = r[1].ToString();
+                cbogt.Text = r[2].ToString();
+                dtngaysinh1.Text = r[3].ToString();
+                txtdc1.Text = r[4].ToString();
+                txtdienthoai.Text = r[5].ToString();
+                dttao1.Text = r[6].ToString();
+                dthethan1.Text = r[7].ToString();
+                txtpage1.Text = vt.ToString();
+                txtpage1.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+                btndau1.Enabled = true;
+            }
+            else btncuoi1.Enabled = false;
+        }        
+        #endregion        
+        #endregion
+
+
+
+        #region PHIEU NHẮC TRẢ
+        #region bingding
+        private void data_bingding3()
+        {
+            txtmapnt.DataBindings.Add("Text", dgvds2.DataSource, "MaPNT");
+            cbomanv.DataBindings.Add("Selectedvalue", dgvds2.DataSource, "MaNV");
+            cbomasach.DataBindings.Add("Selectedvalue", dgvds2.DataSource, "MaSach");
+            txtdgp.DataBindings.Add("Text", dgvds2.DataSource, "DonGiaPhat");
+            txtghichu.DataBindings.Add("Text", dgvds2.DataSource, "GhiChu");
+        }
+        private void huy_bingding3()
+        {
+            if (txtmapnt.DataBindings != null)
+                txtmapnt.DataBindings.Clear();
+            if (txtghichu.DataBindings != null)
+                txtghichu.DataBindings.Clear();
+            if (dtngaplap.DataBindings != null)
+                dtngaplap.DataBindings.Clear();
+            if (txtdgp.DataBindings != null)
+                txtdgp.DataBindings.Clear();
+            if (cbomasach.DataBindings != null)
+                cbomasach.DataBindings.Clear();
+            if (cbomanv.DataBindings != null)
+                cbomanv.DataBindings.Clear();
+        }
+        #endregion
+        private void btnthempnt_Click(object sender, EventArgs e)
+        {
+
+        }
+        #region docpm
+        private DataTable docphieunhactra(string mathe)
+        {
+            DataTable pmsv = new DataTable();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_Docphieunhactrasinhvien";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            //masv = txtmasv.Text;
+            cmd.Parameters.AddWithValue("@mathe", mathe);
+            try
+            {
+                cnn.Open();
+                pmsv.Load(cmd.ExecuteReader());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Loi khong doc duoc phieu muon", e.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }
+            return pmsv;
+        }
+        private void Hienbangphieunhactra(string mathe)
+        {
+            huy_bingding3();
+            dgvds2.DataSource = docphieunhactra(mathe);
+            data_bingding3();
+        }
+        #endregion
+
+        //private void btnin1_Click(object sender, EventArgs e)
+        //{
+        //    inthongtinsach f = new inthongtinsach();
+        //    f.ShowDialog();
+        //}
+
+        #endregion
+        #region bat loi ten va dien thoai
+        private void txtTensv_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar > 45 && e.KeyChar < 57)
+            {
+                e.Handled = true;
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "Không được nhập số";
+            }
+        }
+        
+
+        private void txtdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 45 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 45 && e.KeyChar != 46)
+            {
+                e.Handled = true;
+                lblthongbao.ForeColor = Color.Red;
+                lblthongbao.Text = "Không được nhập chữ";
+            }
+        }
+        #endregion
     }
 }
