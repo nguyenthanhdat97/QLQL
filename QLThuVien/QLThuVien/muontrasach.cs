@@ -223,5 +223,80 @@ namespace QLThuVien
                     cnn.Close();
             }            
         }
+	private void btnluu1_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            docthethuvien();
+            luuthethuvien();
+            data_bingding();
+        }
+        #endregion                        
+        #region  sua thethuvien
+        private void suathethuvien()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_SUATHETHUVIEN";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string ma, ten, diachi, dt;
+            DateTime ngaytao, ngayhethan, ngaysinh;
+            bool gioitinh;
+            ma = txtMa.Text;
+            ten = txtTensv.Text;
+            diachi = txtdiachisv.Text;
+            dt = txtdt.Text;
+            ngayhethan = DateTime.Parse(dtngayhethan.Value.ToString());
+            ngaytao = DateTime.Parse(dtngaytao.Value.ToString());
+            ngaysinh = DateTime.Parse(dtngaysinh.Value.ToString());
+            if (cboGioitinh.Text == "Nam")
+            {
+                gioitinh = true;
+            }
+            else gioitinh = false;
+            cmd.Parameters.Add("@MaThe", ma);
+            cmd.Parameters.Add("@TenSV", ten);
+            cmd.Parameters.Add("@GioiTinh", gioitinh);
+            cmd.Parameters.Add("@NgaySinh", ngaysinh);
+            cmd.Parameters.Add("@DiaChiSV", diachi);
+            cmd.Parameters.Add("@DienThoai", dt);
+            cmd.Parameters.Add("@NgayTao", ngaytao);
+            cmd.Parameters.Add("@NgayHetHan", ngayhethan);
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lblthongbao.ForeColor = Color.Red;
+                    lblthongbao.Text = "đã tồn tại TheThuViện";
+                    return;
+                }
+                else
+                {
+                    lblthongbao.ForeColor = Color.Red;
+                    lblthongbao.Text = "Lưu Thành Công";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }            
+        }
+        private void btnsua1_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            suathethuvien();
+            data_bingding();
+        }
     }
 }
