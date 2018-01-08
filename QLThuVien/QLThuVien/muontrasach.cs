@@ -24,7 +24,20 @@ namespace QLThuVien
             vtttv = new DataTable();
             vtttv = docthethuvien();
         }
-       
+       private void muontrasach_Load(object sender, EventArgs e)
+        {
+            docthethuvien();
+            Hienbangpm(txtMa.Text);
+            Hienbangphieunhactra(txtmathe1.Text);
+            hiensvdautien2();
+            hiensvdautien();
+            loaddlsach();
+            txtmapnt.Enabled = false;
+            txtMa.Enabled = false;
+            txtMapm.Enabled = false;
+            txtmathe1.Enabled = false;
+        }
+        #region hiện thị mã pnt
 
     }
 }
