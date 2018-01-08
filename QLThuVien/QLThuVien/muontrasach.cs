@@ -298,5 +298,183 @@ namespace QLThuVien
             suathethuvien();
             data_bingding();
         }
+	#endregion
+        #region xoanhanvien
+        private void XoaNhanVien()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_XOANHANVIEN";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            string manv;
+            manv = txtMa.Text;
+            cmd.Parameters.Add("@MaNV", manv);
+            DialogResult kq1;
+            kq1 = MessageBox.Show("Bạn Thật Sự Muốn Xóa", "Chú Ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (kq1 == DialogResult.Yes)
+            {
+                try
+                {
+                    cmd.Parameters.Add("@kq",
+                    SqlDbType.Int).Direction =
+                        ParameterDirection.ReturnValue;
+                    cnn.Open();
+                    cmd.ExecuteNonQuery();
+                    int kq2 = (int)cmd.Parameters["@kq"].Value;
+                    if (kq2 == 1)
+                    {
+                        lblthongbao.ForeColor = Color.Red;
+                        lblthongbao.Text = "đã tồn tại TheThuViện trong phieu muon";
+                        return;
+                    } if (kq2 == 2)
+                    {
+                        lblthongbao.ForeColor = Color.Red;
+                        lblthongbao.Text = "đã tồn tại TheThuViện trong phieu nhac tra";
+                        return;
+                    }
+                    else
+                    {
+                        lblthongbao.ForeColor = Color.Red;
+                        lblthongbao.Text = "Lưu Thành Công";
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+                }
+                finally
+                {
+                    if (cnn != null)
+                        cnn.Close();
+                }            
+            }
+            try
+            {
+                cmd.Parameters.Add("@kq",
+                SqlDbType.Int).Direction =
+                    ParameterDirection.ReturnValue;
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                int kq = (int)cmd.Parameters["@kq"].Value;
+                if (kq == 1)
+                {
+                    lblthongbao.ForeColor = Color.Red;
+                    lblthongbao.Text = "Mã đã tồn tại trong Phiếu nhắc trả";
+                    return;
+                }
+                else
+                {
+                    lblthongbao.ForeColor = Color.Red;
+                    lblthongbao.Text = "Xóa Thành Công";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi kg them duoc vi" + ex.Message);
+            }
+            finally
+            {
+                if (cnn != null)
+                    cnn.Close();
+            }
+        }
+        private void btnxoa1_Click(object sender, EventArgs e)
+        {
+            huy_bingding();
+            XoaNhanVien();
+            data_bingding();
+        }
+        #endregion        
+        #region lui
+        private void btnlui1_Click(object sender, EventArgs e)
+        {
+            if (vt > 0)
+            {
+                vt--;
+                DataRow r = vtttv.Rows[vt];
+                txtMa.Text = r[0].ToString();
+                txtTensv.Text = r[1].ToString();
+                cboGioitinh.Text = r[2].ToString();
+                dtngaysinh.Text = r[3].ToString();
+                txtdiachisv.Text = r[4].ToString();
+                txtdt.Text = r[5].ToString();
+                dtngaytao.Text = r[6].ToString();
+                dtngayhethan.Text = r[7].ToString();
+                txtpage.Text = vt.ToString();
+                txtpage.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+                btntoi1.Enabled = true;
+                Hienbangpm(txtMa.Text);
+            }
+            else btnlui1.Enabled = false;
+        }
+        #endregion
+        #region toi
+        private void btntoi1_Click(object sender, EventArgs e)
+        {
+            if (vt < vtttv.Rows.Count - 1)
+            {
+                vt++;
+                DataRow r = vtttv.Rows[vt];
+                txtMa.Text = r[0].ToString();
+                txtTensv.Text = r[1].ToString();
+                cboGioitinh.Text = r[2].ToString();
+                dtngaysinh.Text = r[3].ToString();
+                txtdiachisv.Text = r[4].ToString();
+                txtdt.Text = r[5].ToString();
+                dtngaytao.Text = r[6].ToString();
+                dtngayhethan.Text = r[7].ToString();
+                txtpage.Text = vt.ToString();
+                txtpage.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+                btnlui1.Enabled = true;
+                Hienbangpm(txtMa.Text);
+            }
+            else btntoi1.Enabled = false;
+        }
+        #endregion
+        #region cuoi
+        private void btncuoi1_Click(object sender, EventArgs e)
+        {
+            if (vt < vtttv.Rows.Count - 1)
+            {
+                vt = vtttv.Rows.Count - 1;
+                DataRow r = vtttv.Rows[vt];
+                txtMa.Text = r[0].ToString();
+                txtTensv.Text = r[1].ToString();
+                cboGioitinh.Text = r[2].ToString();
+                dtngaysinh.Text = r[3].ToString();
+                txtdiachisv.Text = r[4].ToString();
+                txtdt.Text = r[5].ToString();
+                dtngaytao.Text = r[6].ToString();
+                dtngayhethan.Text = r[7].ToString();
+                txtpage.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+                btndau1.Enabled = true;
+                Hienbangpm(txtMa.Text);
+            }
+            else btncuoi1.Enabled = false;
+        }
+        #endregion
+        #region dau
+        private void btndau1_Click(object sender, EventArgs e)
+        {
+            if (vt >0)
+            {
+                vt = 0;
+                DataRow r = vtttv.Rows[vt];
+                txtMa.Text = r[0].ToString();
+                txtTensv.Text = r[1].ToString();
+                cboGioitinh.Text = r[2].ToString();
+                dtngaysinh.Text = r[3].ToString();
+                txtdiachisv.Text = r[4].ToString();
+                txtdt.Text = r[5].ToString();
+                dtngaytao.Text = r[6].ToString();
+                dtngayhethan.Text = r[7].ToString();
+                txtpage.Text = (1 + vt).ToString() + "/" + vtttv.Rows.Count.ToString();
+                btncuoi1.Enabled = true;
+                Hienbangpm(txtMa.Text);
+            }
+            else btndau1.Enabled = false;
+        }
     }
 }
